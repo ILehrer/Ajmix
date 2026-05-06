@@ -35,7 +35,7 @@ awk '{
     # Treat ME as 0 if missing
     me = ($6 == "." ? 0 : $6);
 
-    # 3. Apply the Informative Delta check
+    # Apply the Informative Delta check
     diff = $4 - me;
     abs = (diff < 0 ? -diff : diff);
     if (abs > 0.01) print $1, $2, $3, $4, $5, me, $7
