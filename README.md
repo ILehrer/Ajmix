@@ -26,7 +26,7 @@ wget -c https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1.1/vcf
 
 After you have downloaded the gnomAD files, you may proceed with extracting the necessary information. Here is an example for chr18 (replace if analyzing another chromosome):
 ```sh
-bcftools query -r chr20 -f '%POS\t%REF\t%ALT\t%AF_nfe\t%AN_nfe\t%AF_mid\t%AN_mid\n' gnomad.vcf.gz | \
+bcftools query -r chr20 -f '%POS\t%REF\t%ALT\t%AF_nfe\t%AN_nfe\t%AF_mid\t%AN_mid\n' gnomad.genomes.v4.1.1.sites.chr18.vcf.bgz | \
 awk '$4 != $6' > tsv/gnomad_chr18_informative.tsv
 awk '{
     # Drop the row if NFE frequency is missing
@@ -80,12 +80,12 @@ python3 sensitivity\_combined.py
 
 
 ## Explanation of each file
-windowed.py, window\_combined.py - run Baum-Welch to determine admixture time (g) for individual, combined chromosome segments, respectively.
+`windowed.py, window\_combined.py` - run Baum-Welch to determine admixture time (g) for individual, combined chromosome segments, respectively.
 
-sensitivity.py, sensitivity\_combined.py - Run a sensitivity analysis by iterating over window sizes 10kb-100kb in 1kb increments, plotting results fit to an exponential
+`sensitivity.py, sensitivity\_combined.py` - Run a sensitivity analysis by iterating over window sizes 10kb-100kb in 1kb increments, plotting results fit to an exponential
 
-batch.py - runs Baum-Welch on all chromosomes individually and for window sizes 50kb, range from 45-70kb; internally runs windowed.py; outputs table of results
+`batch.py` - runs Baum-Welch on all chromosomes individually and for window sizes 50kb, range from 45-70kb; internally runs windowed.py; outputs table of results
 
-filter.py - helper file; reads the filtered gnomAD .tsv file for a chromosome and returns a df after further filtering and adding helper columns
+`filter.py` - helper file; reads the filtered gnomAD .tsv file for a chromosome and returns a df after further filtering and adding helper columns
 
-sex-averaged\_noncarrier.rmap.txt - a recombination rate map across the entire genome
+`sex-averaged\_noncarrier.rmap.txt` - a recombination rate map across the entire genome
