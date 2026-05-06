@@ -61,31 +61,31 @@ You are now done and ready to proceed.
 
 ## To Run
 ### Reproduce table from paper - run each chromosome on different window sizes
-python3 batch.py
+`python3 batch.py`
 
 ### Run Baum-Welch on individual chromosome
-python3 windowed.py [chr] 
+`python3 windowed.py [chr]` 
 
 ### Run Baum-Welch on individual chromosome with specific window size (enter as integer)
-python3 windowed.py [chr] local [window size]
+`python3 windowed.py [chr] local [window size]`
 
 ### Run Baum-Welch on the combined segment chr18-22
-python3 windowed\_combined.py
+`python3 windowed_combined.py`
 
 ### Run sensitivity analysis on individual chromosome
-python3 sensitivity.py [chr]
+`python3 sensitivity.py [chr]`
 
 ### Run sensitivity analysis on combined segment chr18-22
-python3 sensitivity\_combined.py
+`python3 sensitivity_combined.py`
 
 
 ## Explanation of each file
-`windowed.py, window\_combined.py` - run Baum-Welch to determine admixture time (g) for individual, combined chromosome segments, respectively.
+`windowed.py, window_combined.py` - run Baum-Welch to determine admixture time (g) for individual, combined chromosome segments, respectively.
 
-`sensitivity.py, sensitivity\_combined.py` - Run a sensitivity analysis by iterating over window sizes 10kb-100kb in 1kb increments, plotting results fit to an exponential
+`sensitivity.py, sensitivity_combined.py` - Run a sensitivity analysis by iterating over window sizes 10kb-100kb in 1kb increments, plotting results fit to an exponential
 
 `batch.py` - runs Baum-Welch on all chromosomes individually and for window sizes 50kb, range from 45-70kb; internally runs windowed.py; outputs table of results
 
 `filter.py` - helper file; reads the filtered gnomAD .tsv file for a chromosome and returns a df after further filtering and adding helper columns
 
-`sex-averaged\_noncarrier.rmap.txt` - a recombination rate map across the entire genome
+`sex-averaged_noncarrier.rmap.txt` - a recombination rate map across the entire genome
