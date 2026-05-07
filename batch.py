@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 CHROMS = [18, 19, 20, 21, 22]
 # Range 45kb to 70kb in 2.5kb steps
@@ -12,7 +13,7 @@ for chrom in CHROMS:
     g_50 = None
     
     for w in WINDOWS:
-        cmd = ["python3", "windowed.py", str(chrom), "local", str(w)]
+        cmd = [sys.executable, "windowed.py", str(chrom), "local", str(w)]
         process = subprocess.run(cmd, capture_output=True, text=True)
 
         for line in process.stdout.split('\n'):
