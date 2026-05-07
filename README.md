@@ -11,7 +11,7 @@ To begin, you will need to download the benchmark files and the gnomAD allele fr
 ### gnomAD Allele Frequencies
 To download the gnomAD allele frequencies, run the following:
 ```sh
-for i in {18..22} do
+for i in {18..22}; do
 	wget -c https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1.1/vcf/genomes/gnomad.genomes.v4.1.1.sites.chr$i.vcf.bgz
 	wget -c https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1.1/vcf/genomes/gnomad.genomes.v4.1.1.sites.chr$i.vcf.bgz.tbi
 done
@@ -47,7 +47,7 @@ wget -c https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/Ashkena
 mv HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz benchmark.vcf.gz  # just for ease of use
 mv HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi benchmark.vcf.gz.tbi  # "
 
-for i in {18..22} do
+for i in {18..22}; do
 	bcftools query -r chr$i -f '%POS\t%REF\t%ALT\t[%GT]\n' benchmark.vcf.gz > tsv/hg002_chr${i}_genotypes.tsv
 done
 ```
