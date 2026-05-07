@@ -1,7 +1,7 @@
 # Ajmix
 
 ## Figures
-Pre-made figures are available in the directory figures/
+Pre-made figures are available in the directory `figures/`
 
 ## Requirements
 `bcftools`: if you choose to do the optional setup step below
@@ -12,7 +12,7 @@ Pre-made figures are available in the directory figures/
   - `scipy`
 
 ## Optional Setup [if you wish to reproduce from scratch - not necessary]
-Note that the filtered gnomAD and subject files are both provided in the tsv/ directory (pre-computed with same methods), so this setup is unnecessary. You may skip this section.
+Note that the filtered gnomAD and subject files are both provided in the `tsv/` directory (pre-computed with same methods), so this setup is unnecessary. You may skip this section.
 
 To begin, you will need to download the benchmark files and the gnomAD allele frequencies. The recombination map is already included here (as it's small).
 
