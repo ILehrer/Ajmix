@@ -26,21 +26,16 @@ wget -c https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1.1/vcf
 
 After you have downloaded the gnomAD files, you may proceed with extracting the necessary information. Here is an example for chr18 (replace if analyzing another chromosome):
 ```sh
-bcftools query -r chr20 -f '%POS\t%REF\t%ALT\t%AF_nfe\t%AN_nfe\t%AF_mid\t%AN_mid\n' gnomad.genomes.v4.1.1.sites.chr18.vcf.bgz | \
+bcftools query -r chr18 -f '%POS\t%REF\t%ALT\t%AF_nfe\t%AN_nfe\t%AF_mid\t%AN_mid\n' gnomad.genomes.v4.1.1.sites.chr18.vcf.bgz | \
 awk '$4 != $6' > tsv/gnomad_chr18_informative.tsv
-awk '{
-    # Drop the row if NFE frequency is missing
-    if ($4 == ".") next;
+awk -v OFS='\t' '{
+    # Drop the row if NFE/MID frequency missing
+    if ($4 == "." || $6 == ".") next;
 
-    # Treat ME as 0 if missing
-    me = ($6 == "." ? 0 : $6);
-
-    # Apply the Informative Delta check
-    diff = $4 - me;
+    diff = $4 - $6;
     abs = (diff < 0 ? -diff : diff);
-    if (abs > 0.01) print $1, $2, $3, $4, $5, me, $7
-}' tsv/gnomad_chr18_informative.tsv > tsv/gnomad_chr18_filtered.tsv
-```
+    if (abs > 0.1) print $1, $2, $3, $4, $5, $6, $7
+}' ../tsv/gnomad_chr18_informative.tsv > tsv/gnomad_chr18_filtered.tsv```
 
 ### Subject HG0002 Data
 To download the AJ subject (HG002) data, simply run the following:
