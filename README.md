@@ -4,7 +4,8 @@
 Pre-made figures are available in the directory `figures/`
 
 ## Requirements
-`bcftools`: if you choose to do the optional setup step below
+`bcftools`: if you choose to do the optional setup step below.
+
 `Python 3` with the following libraries:
   - `pandas`
   - `numpy`
