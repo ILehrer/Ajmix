@@ -43,7 +43,7 @@ awk -v OFS='\t' '{
     diff = $4 - $6;
     abs = (diff < 0 ? -diff : diff);
     if (abs > 0.1) print $1, $2, $3, $4, $5, $6, $7
-}' ../tsv/gnomad_chr18_informative.tsv > tsv/gnomad_chr18_filtered.tsv```
+}' tsv/gnomad_chr18_informative.tsv > tsv/gnomad_chr18_filtered.tsv```
 
 ### Subject HG002 Data
 To download the AJ subject (HG002) data, simply run the following:
@@ -93,3 +93,22 @@ You are now done and ready to proceed.
 `filter.py` - helper file; reads the filtered gnomAD .tsv file for a chromosome and returns a df after further filtering and adding helper columns
 
 `sex-averaged_noncarrier.rmap.txt` - a recombination rate map across the entire genome
+
+## Expected Output
+Running `python3 windowed_combined.py` should give you the following output (along with intermediate calculations/logs):
+```
+RESULT: 33.23 generations
+Estimated Admixture Date: ~1096 AD
+```
+Running `python3 batch.py` should give you the following table:
+```
+Chr    | 50kb (Anch)  | Range (45-70kb)      | Max Delta  | Year (50k)
+--------------------------------------------------------------------------------
+18     | 27.25        | 24.34 - 30.85        | 6.51       | ~1263 AD
+19     | 41.28        | 30.86 - 41.28        | 10.42      | ~871 AD
+20     | 33.98        | 23.28 - 37.82        | 14.54      | ~1075 AD
+21     | 34.74        | 28.32 - 35.74        | 7.42       | ~1054 AD
+22     | 30.69        | 24.82 - 33.48        | 8.66       | ~1167 AD
+```
+
+*Note: Admixture dates are assuming a 28-year generation*
