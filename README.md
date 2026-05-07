@@ -3,6 +3,14 @@
 ## Figures
 Pre-made figures are available in the directory figures/
 
+## Requirements
+`bcftools`: if you choose to do the optional setup step below
+`Python 3` with the following libraries:
+  - `pandas`
+  - `numpy`
+  - `matplotlib`
+  - `scipy`
+
 ## Optional Setup [if you wish to reproduce from scratch - not necessary]
 Note that the filtered gnomAD and subject files are both provided in the tsv/ directory (pre-computed with same methods), so this setup is unnecessary. You may skip this section.
 
@@ -37,7 +45,7 @@ awk -v OFS='\t' '{
     if (abs > 0.1) print $1, $2, $3, $4, $5, $6, $7
 }' ../tsv/gnomad_chr18_informative.tsv > tsv/gnomad_chr18_filtered.tsv```
 
-### Subject HG0002 Data
+### Subject HG002 Data
 To download the AJ subject (HG002) data, simply run the following:
 ```sh
 
@@ -55,10 +63,11 @@ done
 You are now done and ready to proceed.
 
 ## To Run
+(note that some of these, specifically `sensitivity_combined.py` and `batch.py`, may take a few minutes to run)
 ### Reproduce table from paper - run each chromosome on different window sizes
 `python3 batch.py`
 
-### Run Baum-Welch on individual chromosome
+### Run Baum-Welch on individual chromosome, outputting the admixture time in generations
 `python3 windowed.py [chr]` 
 
 ### Run Baum-Welch on individual chromosome with specific window size (enter as integer)
@@ -67,7 +76,7 @@ You are now done and ready to proceed.
 ### Run Baum-Welch on the combined segment chr18-22
 `python3 windowed_combined.py`
 
-### Run sensitivity analysis on individual chromosome
+### Run sensitivity analysis on individual chromosome, producing a plot of admixture time by window size
 `python3 sensitivity.py [chr]`
 
 ### Run sensitivity analysis on combined segment chr18-22
