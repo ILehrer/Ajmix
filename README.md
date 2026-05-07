@@ -112,4 +112,6 @@ Chr    | 50kb (Anch)  | Range (45-70kb)      | Max Delta  | Year (50k)
 22     | 30.69        | 24.82 - 33.48        | 8.66       | ~1167 AD
 ```
 
-*Note: Admixture dates are assuming a 28-year generation*
+*Note 1: Admixture dates are assuming a 28-year generation*
+
+*Note 2: We only prepared chr18-chr22 data, but Ajmix should work on any chromosome, if you download and use the data properly. We welcome any feedback on results from other regions!*
